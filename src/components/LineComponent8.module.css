@@ -1,0 +1,9 @@
+.lineDiv {
+  position: relative;
+  border-top: 1px solid var(--color-gainsboro);
+  box-sizing: border-box;
+  width: 1018.2px;
+  height: 1px;
+  transform: rotate(-0.41deg);
+  transform-origin: 0 0;
+}

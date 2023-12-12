@@ -1,0 +1,48 @@
+.images1Icon {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  width: 1440px;
+  height: 1024px;
+  object-fit: cover;
+}
+.desktop22Child {
+  position: absolute;
+  top: 5px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  width: 1440px;
+  height: 100px;
+  object-fit: cover;
+  mix-blend-mode: normal;
+}
+.cultifyHighResolutionLogoC1 {
+  position: absolute;
+  top: 21px;
+  left: 50px;
+  border-radius: var(--br-mini);
+  width: 225px;
+  height: 67px;
+}
+.ngDngQun2 {
+  position: absolute;
+  top: 5px;
+  left: 443px;
+  display: flex;
+  align-items: center;
+  width: 810px;
+  height: 105px;
+}
+.desktop221 {
+  text-decoration: none;
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  width: 100%;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-31xl);
+  color: var(--color-black);
+  font-family: var(--font-lato);
+}

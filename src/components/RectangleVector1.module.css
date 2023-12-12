@@ -1,0 +1,9 @@
+.rectangleDiv {
+  position: relative;
+  border-radius: var(--br-11xl);
+  border: 3px solid var(--color-darkslategray-300);
+  box-sizing: border-box;
+  width: 1108px;
+  height: 204px;
+  display: none;
+}

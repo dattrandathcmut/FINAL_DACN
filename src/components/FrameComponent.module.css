@@ -1,0 +1,32 @@
+.thmNngTri1 {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  position: relative;
+  font-size: var(--font-size-8xl);
+  line-height: 177%;
+  font-family: var(--font-spartan);
+  color: var(--color-black);
+  text-align: center;
+  display: inline-block;
+  width: 534px;
+  height: 70px;
+  flex-shrink: 0;
+}
+.thmNngTriParent {
+  position: relative;
+  background-color: var(--neutral-colors-white);
+  width: 534px;
+  height: 401px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0px 79px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 122px;
+  max-width: 100%;
+  max-height: 100%;
+}

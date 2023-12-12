@@ -1,0 +1,39 @@
+.firstName {
+  position: absolute;
+  width: 129.38%;
+  top: 0%;
+  left: 0%;
+  display: inline-block;
+}
+.componentChild {
+  position: absolute;
+  height: 66.28%;
+  width: 129.38%;
+  top: 33.72%;
+  right: -29.37%;
+  bottom: 0%;
+  left: 0%;
+  border-radius: var(--br-4xs);
+  background-color: var(--neutral-colors-white);
+  border: 1px solid var(--color-darkgray);
+  box-sizing: border-box;
+}
+.userName {
+  position: absolute;
+  width: 121.59%;
+  top: 56.98%;
+  left: 7.78%;
+  font-size: var(--text-single-200-medium-size);
+  font-weight: 300;
+  color: var(--color-gray-200);
+  display: inline-block;
+}
+.firstNameParent {
+  position: relative;
+  width: 176px;
+  height: 86px;
+  text-align: left;
+  font-size: var(--text-single-300-bold-size);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

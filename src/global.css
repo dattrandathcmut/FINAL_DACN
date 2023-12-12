@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Actor:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-spartan: Spartan;
+  --font-poppins: Poppins;
+  --font-roboto: Roboto;
+  --font-lato: Lato;
+  --headings-h5: Inter;
+  --font-actor: Actor;
+  --font-inherit: inherit;
+
+  /* font sizes */
+  --font-size-8xl: 27px;
+  --font-size-3xs: 10px;
+  --font-size-xs: 12px;
+  --text-single-200-medium-size: 14px;
+  --font-size-smi: 13px;
+  --font-size-lg-1: 18.1px;
+  --headings-h5-size: 18px;
+  --special-headings-display-3-size: 44px;
+  --font-size-13xl: 32px;
+  --text-single-300-bold-size: 16px;
+  --font-size-16xl: 35px;
+  --font-size-xl: 20px;
+  --font-size-6xl: 25px;
+  --font-size-3xl: 22px;
+  --font-size-mid-5: 17.5px;
+  --font-size-5xl: 24px;
+  --font-size-11xl: 30px;
+  --font-size-26xl: 45px;
+  --font-size-31xl: 50px;
+
+  /* Colors */
+  --neutral-colors-white: #fff;
+  --color-black: #000;
+  --color-gray-100: #8d8d8d;
+  --color-gray-200: #808080;
+  --color-gray-600: #2c2c2e;
+  --neutral-colors-black: #1e1c39;
+  --color-gray-300: rgba(255, 255, 255, 0.82);
+  --color-gray-400: rgba(255, 255, 255, 0.75);
+  --color-gray-500: rgba(0, 0, 0, 0.1);
+  --color-darkgray: #adadad;
+  --color-darkgray-100: #989898;
+  --color-darkslategray-100: #1b4332;
+  --color-darkslategray-200: #263238;
+  --color-darkslategray-300: rgba(27, 67, 50, 0.5);
+  --system-colors-green-400: #04ce00;
+  --color-green: #008000;
+  --color-mintcream: rgba(242, 248, 242, 0.7);
+  --color-dodgerblue: #4285f4;
+  --color-olivedrab-100: #779341;
+  --color-olivedrab-200: rgba(119, 147, 65, 0.3);
+  --neutral-colors-text-gray: #615e83;
+  --neutral-colors-500: #e5e5ef;
+  --color-darkslateblue: #111540;
+  --color-gainsboro: #ddd;
+
+  /* Gaps */
+  --gap-8xs: 5px;
+  --gap-3xs: 10px;
+  --gap-mini: 15px;
+  --gap-10xs: 3px;
+
+  /* Paddings */
+  --padding-8xs: 5px;
+  --padding-8xl: 27px;
+  --padding-3xs: 10px;
+  --padding-smi: 13px;
+  --padding-6xl-1: 25.1px;
+  --padding-4xl: 23px;
+
+  /* border radiuses */
+  --br-3xs: 10px;
+  --br-mini: 15px;
+  --br-xl: 20px;
+  --br-31xl: 50px;
+  --br-4xs: 9px;
+  --br-11xl: 30px;
+  --br-sm: 14px;
+
+  /* Effects */
+  --general-shadows-shadow-01: 0px 2px 6px rgba(13, 10, 44, 0.08);
+}

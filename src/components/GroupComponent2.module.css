@@ -1,0 +1,38 @@
+.enterYourEmail1 {
+  position: absolute;
+  top: -2.17%;
+  left: 0%;
+}
+.componentChild {
+  position: absolute;
+  height: 61.96%;
+  width: 100%;
+  top: 38.04%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  border-radius: var(--br-4xs);
+  background-color: var(--neutral-colors-white);
+  border: 1px solid var(--color-dodgerblue);
+  box-sizing: border-box;
+}
+.examplegmailcom {
+  position: absolute;
+  height: 20.65%;
+  width: 66.96%;
+  top: 58.7%;
+  left: 5.54%;
+  font-size: var(--text-single-200-medium-size);
+  font-weight: 300;
+  color: var(--color-gray-200);
+  display: inline-block;
+}
+.enterYourEmailAddressParent {
+  position: relative;
+  width: 451px;
+  height: 92px;
+  text-align: left;
+  font-size: var(--text-single-300-bold-size);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

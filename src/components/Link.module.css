@@ -1,0 +1,26 @@
+.icon1 {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+.dashboard {
+  position: relative;
+}
+.link {
+  position: relative;
+  width: 52px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px var(--padding-8xs);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-8xs);
+  text-align: center;
+  font-size: var(--font-size-3xs);
+  color: var(--neutral-colors-white);
+  font-family: var(--font-poppins);
+}

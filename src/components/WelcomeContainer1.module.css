@@ -1,0 +1,89 @@
+.groupChild {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  background-color: var(--color-gray-300);
+  width: 572px;
+  height: 579px;
+}
+.cultify {
+  font-weight: 600;
+  color: var(--color-olivedrab-100);
+}
+.welcomeToCultifyContainer {
+  position: absolute;
+  top: 46px;
+  left: 118px;
+  font-size: var(--font-size-16xl);
+}
+.span {
+  color: var(--color-gray-100);
+}
+.signUp {
+  color: var(--color-green);
+}
+.noAccountContainer {
+  position: absolute;
+  top: 415px;
+  left: 355px;
+  display: inline-block;
+  width: 141px;
+  cursor: pointer;
+}
+.login {
+  position: absolute;
+  top: 113px;
+  left: 226px;
+  font-size: var(--font-size-26xl);
+  font-weight: 500;
+  color: var(--color-green);
+}
+.forgotPassword {
+  position: absolute;
+  top: 415px;
+  left: 67px;
+  cursor: pointer;
+}
+.groupItem {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  background-color: var(--color-green);
+  box-shadow: 0px 4px 19px rgba(119, 147, 65, 0.3);
+  width: 236px;
+  height: 54px;
+}
+.signIn {
+  position: absolute;
+  top: 15px;
+  left: 91px;
+  font-size: var(--text-single-300-bold-size);
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--neutral-colors-white);
+  text-align: left;
+}
+.rectangleGroup {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 454px;
+  left: 175px;
+  width: 236px;
+  height: 54px;
+}
+.rectangleParent {
+  position: absolute;
+  top: 252px;
+  left: 463px;
+  width: 572px;
+  height: 579px;
+  text-align: left;
+  font-size: var(--font-size-smi);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

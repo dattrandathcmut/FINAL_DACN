@@ -1,0 +1,83 @@
+.groupChild {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  background-color: var(--color-gray-300);
+  width: 572px;
+  height: 723px;
+}
+.cultify {
+  font-weight: 600;
+  color: var(--color-olivedrab-100);
+}
+.welcomeToCultifyContainer {
+  position: absolute;
+  top: 41px;
+  left: 118px;
+}
+.span {
+  color: var(--color-gray-100);
+}
+.login {
+  color: var(--color-green);
+}
+.haveAnAccountContainer {
+  position: absolute;
+  top: 613px;
+  left: 355px;
+  font-size: var(--font-size-smi);
+  display: inline-block;
+  width: 174px;
+}
+.register {
+  position: absolute;
+  top: 93px;
+  left: 197px;
+  font-size: var(--font-size-26xl);
+  font-weight: 500;
+  color: var(--color-green);
+}
+.groupItem {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  border-radius: var(--br-mini);
+  background-color: var(--color-green);
+  box-shadow: 0px 4px 19px rgba(119, 147, 65, 0.3);
+  width: 236px;
+  height: 54px;
+}
+.register1 {
+  position: absolute;
+  top: 14px;
+  left: 81px;
+  font-size: var(--text-single-300-bold-size);
+  font-weight: 500;
+  font-family: var(--font-poppins);
+  color: var(--neutral-colors-white);
+  text-align: left;
+  cursor: pointer;
+}
+.rectangleGroup {
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  top: 654px;
+  left: 175px;
+  width: 236px;
+  height: 54px;
+}
+.rectangleParent {
+  position: absolute;
+  top: 265px;
+  left: 459px;
+  width: 572px;
+  height: 723px;
+  text-align: left;
+  font-size: var(--font-size-16xl);
+  color: var(--color-black);
+  font-family: var(--font-poppins);
+}

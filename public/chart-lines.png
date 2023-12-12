@@ -1,0 +1,13 @@
+<svg width="411" height="220" viewBox="0 0 411 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="7.17383" y1="1.39709" x2="410.186" y2="1.39709" stroke="#E5E5EF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7"/>
+<line x1="7.17383" y1="54.1561" x2="410.187" y2="54.1561" stroke="#E5E5EF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7"/>
+<line x1="7.17383" y1="106.915" x2="410.186" y2="106.915" stroke="#E5E5EF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7"/>
+<line x1="7.17383" y1="159.674" x2="410.186" y2="159.674" stroke="#E5E5EF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 7"/>
+<line x1="7.02051" y1="219.25" x2="410.033" y2="219.25" stroke="#F2F1FF" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="89.1455" y1="0.720337" x2="89.1455" y2="220" stroke="#E5E5EF"/>
+<line x1="150.355" y1="0.720337" x2="150.355" y2="220" stroke="#E5E5EF"/>
+<line x1="217.556" y1="0.720337" x2="217.556" y2="220" stroke="#E5E5EF"/>
+<line x1="276.761" y1="0.720337" x2="276.761" y2="220" stroke="#E5E5EF"/>
+<line x1="333.966" y1="0.720337" x2="333.966" y2="220" stroke="#E5E5EF"/>
+<path d="M2 66.8896L29.5 76.8896L66.5 31.9319L107 76.8896L134.5 42.3896H167.5L187 66.8896L198.5 42.3896L212 58.3896L229 42.3896L248.5 50.3896L259 31.9319L273.5 42.3896L305 58.3896L316.5 58.3896L332.5 42.3896L365 58.3896H396.5" stroke="#FF2D79" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
