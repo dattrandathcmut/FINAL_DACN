@@ -1,0 +1,14 @@
+{
+  "locofyConfig": {
+    "project_name": "DACN",
+    "id": "6566ac6c351ac4af9ff20ce5",
+    "framework": "react",
+    "typescript": false,
+    "path": "public/",
+    "componentsPath": "c:\\Users\\84358\\OneDrive\\Desktop\\Đồ án\\src\\components",
+    "screensPath": "c:\\Users\\84358\\OneDrive\\Desktop\\Đồ án\\src\\pages",
+    "styling": "CSS Modules",
+    "unit": "px",
+    "naming": "Pascal Case"
+  }
+}
