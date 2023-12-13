@@ -32,6 +32,7 @@ const Frame2 = () => {
     try {
       const response = await fetch('http://localhost:5000/api/data');
       const json = await response.json();
+      console.log(json.data[0]);
       setEnvironmentData(json.data[0]);
       console.log('I already get this data', json.data[0]);
     } catch (error) {
