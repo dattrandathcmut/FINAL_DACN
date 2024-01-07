@@ -15,18 +15,15 @@
   background-color: var(--neutral-colors-white);
   border: 1px solid var(--color-dodgerblue);
   box-sizing: border-box;
-}
-.examplegmailcom {
-  position: absolute;
-  height: 20.65%;
-  width: 66.96%;
-  top: 58.7%;
-  left: 5.54%;
+
+  /* Apply text styles similar to .examplegmailcom */
   font-size: var(--text-single-200-medium-size);
   font-weight: 300;
   color: var(--color-gray-200);
   display: inline-block;
+  padding: 20px; /* Add padding to match the styling */
 }
+
 .enterYourEmailAddressParent {
   position: relative;
   width: 451px;

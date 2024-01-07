@@ -6,6 +6,8 @@ const GroupComponent = ({
   groupDivPosition,
   groupDivTop,
   groupDivLeft,
+  inputValue,
+  onInputChange,
 }) => {
   const groupDivStyle = useMemo(() => {
     return {
@@ -18,8 +20,12 @@ const GroupComponent = ({
   return (
     <div className={styles.firstNameParent} style={groupDivStyle}>
       <div className={styles.firstName}>{firstName}</div>
-      <div className={styles.componentChild} />
-      <div className={styles.userName}>{userName}</div>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={onInputChange}
+        className={styles.componentChild}
+      />
     </div>
   );
 };

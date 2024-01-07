@@ -6,11 +6,11 @@ const Frame4 = () => {
   const navigate = useNavigate();
 
   const onFrame35Click = useCallback(() => {
-    navigate("/frame-35");
+    navigate("/main");
   }, [navigate]);
 
-  const onDesktop23Click = useCallback(() => {
-    navigate("/desktop-23");
+  const onRectangleClick = useCallback(() => {
+    navigate("/forgot-password");
   }, [navigate]);
 
   return (

@@ -4,16 +4,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@500;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Actor:wght@400&display=swap");
+*,
+*::after,
+*::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
 body {
   margin: 0;
   line-height: normal;
 }
 :root {
   /* fonts */
-  --font-spartan: Spartan;
-  --font-poppins: Poppins;
-  --font-roboto: Roboto;
-  --font-lato: Lato;
+  --font-spartan: Montserrat, sans-serif;
+  --font-poppins: Poppins, sans-serif;
+  --font-roboto: Roboto, sans-serif;
+  --font-lato: Lato, sans-serif;
   --headings-h5: Inter;
   --font-actor: Actor;
   --font-inherit: inherit;

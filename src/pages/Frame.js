@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+
 import FrameComponent from '../components/FrameComponent';
 import PortalPopup from '../components/PortalPopup';
 import { useNavigate } from 'react-router-dom';
@@ -8,23 +9,22 @@ import Table from './../components/Table';
 
 const Frame = () => {
 	const [isFrameOpen, setFrameOpen] = useState(false);
-	const navigate = useNavigate();
+	const [environmentData, setEnvironmentData] = useState({});
 	const [items, setItems] = useState([]);
 
-	const onRectangle1Click = useCallback(() => {
-		navigate('/');
-	}, [navigate]);
+	const [page, setPage] = useState(1);
+	const [limit, setLimit] = useState(10);
+
+	const token = sessionStorage.getItem('token');
+
+	const navigate = useNavigate();
 
 	const onTngQuanNngClick = useCallback(() => {
-		navigate('/frame-36');
+		navigate('/farm-overview');
 	}, [navigate]);
 
 	const onNngSutDClick = useCallback(() => {
-		navigate('/frame-38');
-	}, [navigate]);
-
-	const onRectangle8Click = useCallback(() => {
-		navigate('/');
+		navigate('/expected-productivity');
 	}, [navigate]);
 
 	const openFrame = useCallback(() => {
@@ -36,46 +36,84 @@ const Frame = () => {
 	}, []);
 
 	const onFrameButtonClick = useCallback(() => {
-		navigate('/frame-35');
+		navigate('/main');
 	}, [navigate]);
 
 	const onBackTextClick = useCallback(() => {
-		navigate('/frame-35');
+		navigate('/main');
 	}, [navigate]);
 
-	const onRectangleButtonClick = useCallback(() => {
-		navigate('/');
-	}, [navigate]);
-
-	const fetchData = useCallback(async () => {
-		fetch('http://localhost:5000/api/data', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				// console.log('hi', data);
-				setItems(data);
-			})
-			.catch((error) => console.error(error));
+	// Fetch data current
+	const fetchDataCurrent = useCallback(async () => {
+		try {
+			const response = await fetch('http://localhost:5000/api/data', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: 'Bearer ' + token,
+				},
+			});
+			const json = await response.json();
+			setEnvironmentData(json.data[0]);
+		} catch (error) {
+			console.error('Error fetching data:', error);
+			navigate('/404');
+		}
 	}, []);
+
+	const totalPages = Math.ceil(items.result / limit);
+
+	let pages = [];
+	for (let i = 1; i <= totalPages; i++) {
+		pages.push(i);
+	}
+	useEffect(() => {
+		fetchDataCurrent(); // Fetch data immediately on component mount
+		const fetchDataInterval = setInterval(fetchDataCurrent, 5000); // Then fetch data every 5 seconds
+
+		// Clean up the interval on unmount
+		return () => clearInterval(fetchDataInterval);
+	}, [fetchDataCurrent]);
+
+	// Fetch Data table
+	const fetchDataTable = useCallback(async () => {
+		console.log('Page when fetch', page);
+		try {
+			const response = await fetch(
+				`http://localhost:5000/api/data?page=${page}&limit=${limit}`,
+				{
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: 'Bearer ' + token,
+					},
+				}
+			)
+				.then((response) => response.json())
+				.then((data) => {
+					setItems(data);
+				});
+		} catch (error) {
+			console.error('Error fetching data:', error);
+			navigate('/404');
+		}
+	}, [page, limit]); // Track 'page' and 'limit' states
+
+	useEffect(() => {
+		fetchDataTable(); // Fetch data immediately on component mount
+		const fetchDataInterval = setInterval(fetchDataTable, 5000); // Then fetch data every 5 seconds
+
+		// Clean up the interval on unmount
+		return () => clearInterval(fetchDataInterval);
+	}, [fetchDataTable]); // Track 'fetchDataTable' function
+
 	const columns = [
 		{ field: 'id', header: 'ID' },
 		{ field: 'temperature', header: 'Nhiệt độ' },
 		{ field: 'humidity', header: 'Độ ẩm' },
 		{ field: 'soilMoisture', header: 'Độ ẩm đất' },
 		{ field: 'ts', header: 'Thời gian ghi' },
-
 	];
-	useEffect(() => {
-		fetchData(); // Fetch data immediately on component mount
-		const fetchDataInterval = setInterval(fetchData, 5000); // Then fetch data every 5 seconds
-
-		// Clean up the interval on unmount
-		return () => clearInterval(fetchDataInterval);
-	}, [fetchData]);
 	return (
 		<>
 			<div className={styles.frameParent}>
@@ -83,7 +121,8 @@ const Frame = () => {
 					<div className={styles.frameDiv}>
 						<div className={styles.rectangleParent}>
 							<div className={styles.frameChild} />
-							<div className={styles.frameItem} onClick={onRectangle1Click} />
+							<div className={styles.groupItem} />
+
 							<SideBar
 								icon='/icon1.png'
 								showNavLinks={false}
@@ -97,7 +136,7 @@ const Frame = () => {
 								sideBarHeight='900px'
 								sideBarPosition='absolute'
 								sideBarTop='123px'
-								sideBarLeft='2px'
+								sideBarLeft='0px'
 								sideBarBorderRadius='0px var(--br-31xl) 0px 0px'
 								rectangleDivBackgroundColor='1px solid #1b4332'
 							/>
@@ -115,10 +154,6 @@ const Frame = () => {
 							</button>
 							<button className={styles.thngK1}> Thống kê</button>
 							<button className={styles.giNng1}> Gợi ý năng suất</button>
-							<div
-								className={styles.rectangleDiv}
-								onClick={onRectangle8Click}
-							/>
 
 							<select className={styles.alignJustify1} onClick={openFrame} />
 							<b className={styles.nngTri11}>Nông trại 1</b>
@@ -126,12 +161,13 @@ const Frame = () => {
 					</div>
 					<div className={styles.chart6}>
 						<div className={styles.container6} />
-						<b className={styles.cardTitle}>Ánh sáng</b>
+						<b className={styles.amount2}>{environmentData.temperature}°C</b>
+						<b className={styles.cardTitle}>Nhiệt độ</b>
 					</div>
 					<div className={styles.chart5}>
 						<div className={styles.container6} />
-						<b className={styles.amount}>7,5</b>
-						<b className={styles.cardTitle1}>Độ PH đất</b>
+						<b className={styles.amount}>{environmentData.soilMoisture}%</b>
+						<b className={styles.cardTitle1}>Độ ẩm đất</b>
 					</div>
 					<div className={styles.chart4}>
 						<div className={styles.container6} />
@@ -144,9 +180,9 @@ const Frame = () => {
 								/>
 								<div className={styles.number}>+21.01%</div>
 							</div>
-							<b className={styles.amount1}>71,01%</b>
+							<b className={styles.amount1}>{environmentData.humidity}%</b>
 						</div>
-						<b className={styles.cardTitle2}>Độ ẩm đất</b>
+						<b className={styles.cardTitle2}>Độ ẩm</b>
 					</div>
 
 					<button className={styles.backWrapper} onClick={onFrameButtonClick}>
@@ -156,48 +192,30 @@ const Frame = () => {
 					</button>
 					<div className={styles.frameWrapper} data-scroll-to='frameContainer'>
 						<div className={styles.historyParent}>
-							{/* <div className={styles.history}>{`History `}</div> */}
-							<span className={styles.result}>Kết quả: {items.result}</span>
+							<span className={styles.result}>
+								<strong>Kết quả: </strong>
+								{items.result}
+							</span>
 							<Table data={items} columns={columns} />
-
-							{/* <div>{items.data}</div> */}
-							
-							{/* <div className={styles.sThT1}>Số thứ tự</div>
-							<div className={styles.date}>Date</div>
-							<div className={styles.mKhngKh1}>Độ ẩm không khí</div>
-							<div className={styles.mT}>Độ ẩm đất</div>
-							<div className={styles.div}>
-								<p className={styles.p}>#41</p>
+							<div>
+								{pages.map((pageNumber) => (
+									<button
+										className={styles.button}
+										key={pageNumber}
+										onClick={() => {
+											setPage(pageNumber);
+											console.log('Set page', page);
+										}}
+										style={{
+											backgroundColor:
+												pageNumber === page ? '#4CAF50' : 'white',
+											color: pageNumber === page ? 'white' : 'black',
+										}}
+									>
+										{pageNumber}
+									</button>
+								))}
 							</div>
-							<div className={styles.div1}>
-								<p className={styles.p}>#41</p>
-							</div>
-							<div className={styles.div2}>#41</div>
-							<div className={styles.div3}>#41</div>
-							<div className={styles.t152219000z}>2023-12-08T15:22:19.000Z</div>
-							<div className={styles.div4}>72</div>
-							<div className={styles.div5}>72</div>
-							<div className={styles.div6}>72</div>
-							<div className={styles.div7}>72</div>
-							<div className={styles.t152219000z1}>
-								2023-12-08T15:22:19.000Z
-							</div>
-							<div className={styles.t152219000z2}>
-								2023-12-08T15:22:19.000Z
-							</div>
-							<div className={styles.t152219000z3}>
-								2023-12-08T15:22:19.000Z
-							</div>
-							<div className={styles.nhit}>Nhiệt độ</div>
-							<div className={styles.nhSng}>Ánh sáng</div>
-							<div className={styles.div8}>27.6</div>
-							<div className={styles.div9}>27.6</div>
-							<div className={styles.div10}>27.6</div>
-							<div className={styles.div11}>27.6</div>
-							<div className={styles.div12}>63</div>
-							<div className={styles.div13}>63</div>
-							<div className={styles.div14}>63</div>
-							<div className={styles.div15}>63</div> */}
 						</div>
 					</div>
 				</div>

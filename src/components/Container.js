@@ -5,19 +5,19 @@ const Container = () => {
   const navigate = useNavigate();
 
   const onGroupContainerClick = useCallback(() => {
-    navigate("/frame-36");
+    navigate("/farm-overview");
   }, [navigate]);
 
   const onRectangleButtonClick = useCallback(() => {
-    navigate("/frame-36");
+    navigate("/farm-overview");
   }, [navigate]);
 
   const onRectangleButton1Click = useCallback(() => {
-    navigate("/frame-36");
+    navigate("/farm-overview");
   }, [navigate]);
 
   const onViewFullDetailsClick = useCallback(() => {
-    navigate("/frame-36");
+    navigate("/farm-overview");
   }, [navigate]);
 
   return (
@@ -27,6 +27,7 @@ const Container = () => {
         <button className={styles.groupItem} onClick={onRectangleButtonClick} />
       </div>
       <button className={styles.groupInner} onClick={onRectangleButton1Click} />
+      <img className={styles.groupInner} alt="" src="/undefined8.png" />
       <div className={styles.viewFullDetails1} onClick={onViewFullDetailsClick}>
         View full details
       </div>

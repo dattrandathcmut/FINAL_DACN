@@ -1,103 +1,93 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import ResetPasswordContainer1 from "./ResetPasswordContainer1";
-import GroupComponent1 from "./GroupComponent1";
-import styles from "./ResetPasswordContainer.module.css";
+import { useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ResetPasswordContainer1 from './ResetPasswordContainer1';
+import GroupComponent1 from './GroupComponent1';
+import GroupComponent2 from './GroupComponent2';
+import styles from './ResetPasswordContainer.module.css';
 const ResetPasswordContainer = () => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
+	const [password, setPassword] = useState('');
+	const [confirmPassword, setConfirmPassword] = useState('');
+	const [verify, setVerify] = useState('');
 
-  const onRectangleClick = useCallback(() => {
-    navigate("/frame-35");
-  }, [navigate]);
+	const postData = useCallback(async () => {
+		try {
+			const queryParams = new URLSearchParams(window.location.search);
+			const email = queryParams.get('email');
+			const response = await fetch(
+				`http://localhost:5000/api/users/resetPassword/?email={email}`,
+				{
+					method: 'PATCH',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({
+						password: password,
+						passwordConfirm: confirmPassword,
+						verifyNumber: verify,
+					}),
+				}
+			);
+			const json = await response.json();
+			sessionStorage.setItem('token', json.token);
+		} catch (error) {
+			console.error('Error posting data:', error);
+			navigate('/404');
+		}
+	}, [password, confirmPassword, verify]);
 
-  return (
-    <div className={styles.rectangleParent}>
-      <div className={styles.groupChild} />
-      <div className={styles.resetPasswordWrapper}>
-        <div className={styles.resetPassword}>Reset Password</div>
-      </div>
-      <ResetPasswordContainer1
-        buttonText="Reset password"
-        onRectangle1Click={onRectangleClick}
-      />
-      <div className={styles.instanceParent}>
-        <GroupComponent1
-          usernameOrEmailAddress="example@gmail.com"
-          showRectangleDiv
-          showUsernameOrEmail={false}
-          groupDivWidth="438px"
-          groupDivHeight="97px"
-          groupDivPosition="absolute"
-          groupDivTop="0px"
-          groupDivLeft="0px"
-          groupDivBorderRadius="15px"
-          enterYourUsernameTop="-2.16%"
-          rectangleDivHeight="61.96%"
-          rectangleDivTop="38.04%"
-          rectangleDivBorder="1px solid var(--color-dodgerblue)"
-          usernameOrEmailHeight="20.62%"
-          usernameOrEmailTop="58.66%"
-          usernameOrEmailLeft="5.55%"
-        />
-        <GroupComponent1
-          usernameOrEmailAddress="example@gmail.com"
-          showRectangleDiv
-          showUsernameOrEmail={false}
-          groupDivWidth="438px"
-          groupDivHeight="97px"
-          groupDivPosition="absolute"
-          groupDivTop="121px"
-          groupDivLeft="0px"
-          groupDivBorderRadius="15px"
-          enterYourUsernameTop="-2.16%"
-          rectangleDivHeight="61.96%"
-          rectangleDivTop="38.04%"
-          rectangleDivBorder="1px solid var(--color-dodgerblue)"
-          usernameOrEmailHeight="20.62%"
-          usernameOrEmailTop="58.66%"
-          usernameOrEmailLeft="5.55%"
-        />
-        <GroupComponent1
-          usernameOrEmailAddress="Create a secure password"
-          showRectangleDiv={false}
-          showUsernameOrEmail={false}
-          groupDivWidth="451px"
-          groupDivHeight="35px"
-          groupDivPosition="absolute"
-          groupDivTop="15px"
-          groupDivLeft="0px"
-          groupDivBorderRadius="15px"
-          enterYourUsernameTop="-2.29%"
-          rectangleDivHeight="62%"
-          rectangleDivTop="38%"
-          rectangleDivBorder="1px solid var(--color-darkgray)"
-          usernameOrEmailHeight="20.57%"
-          usernameOrEmailTop="58.57%"
-          usernameOrEmailLeft="5.54%"
-        />
-        <GroupComponent1
-          enterYourUsernameOrEmailA="Enter new password"
-          usernameOrEmailAddress="Create a secure password"
-          showRectangleDiv={false}
-          showUsernameOrEmail={false}
-          groupDivWidth="451px"
-          groupDivHeight="35px"
-          groupDivPosition="absolute"
-          groupDivTop="0px"
-          groupDivLeft="0px"
-          groupDivBorderRadius="15px"
-          enterYourUsernameTop="-2.29%"
-          rectangleDivHeight="62%"
-          rectangleDivTop="38%"
-          rectangleDivBorder="1px solid var(--color-darkgray)"
-          usernameOrEmailHeight="20.57%"
-          usernameOrEmailTop="58.57%"
-          usernameOrEmailLeft="5.54%"
-        />
-        <div className={styles.confirmNewPassword1}>Confirm new password</div>
-      </div>
-    </div>
-  );
+	const onRectangleClick = useCallback(async () => {
+		await postData();
+		navigate('/');
+	}, [navigate]);
+
+	return (
+		<div className={styles.rectangleParent}>
+			<div className={styles.groupChild} />
+			<div className={styles.resetPasswordWrapper}>
+				<div className={styles.resetPassword}>Reset Password</div>
+			</div>
+			<ResetPasswordContainer1
+				buttonText='Reset password'
+				onRectangle1Click={onRectangleClick}
+			/>
+			<div className={styles.instanceParent}>
+				<GroupComponent2
+					enterYourEmailAddress='Enter new password'
+					examplegmailcom='example@gmail.com'
+					groupDivPosition='absolute'
+					groupDivTop='15px'
+					groupDivLeft='0px'
+					groupDivBorderRadius='15px'
+					rectangleDivBorder='1px solid var(--color-dodgerblue)'
+					inputValue={password}
+					onInputChange={(e) => setPassword(e.target.value)}
+				/>
+				<GroupComponent2
+					enterYourEmailAddress='Confirm new password'
+					examplegmailcom='example@gmail.com'
+					groupDivPosition='absolute'
+					groupDivTop='115px'
+					groupDivLeft='0px'
+					groupDivBorderRadius='15px'
+					rectangleDivBorder='1px solid var(--color-dodgerblue)'
+					inputValue={confirmPassword}
+					onInputChange={(e) => setConfirmPassword(e.target.value)}
+				/>
+				<GroupComponent2
+					enterYourEmailAddress='Verify code (we just send to your email)'
+					examplegmailcom='example@gmail.com'
+					groupDivPosition='absolute'
+					groupDivTop='215px'
+					groupDivLeft='0px'
+					groupDivBorderRadius='15px'
+					rectangleDivBorder='1px solid var(--color-dodgerblue)'
+					inputValue={verify}
+					onInputChange={(e) => setVerify(e.target.value)}
+				/>
+			</div>
+		</div>
+	);
 };
 
 export default ResetPasswordContainer;

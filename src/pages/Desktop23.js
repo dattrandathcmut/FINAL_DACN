@@ -5,12 +5,8 @@ import styles from "./Desktop23.module.css";
 const Desktop23 = () => {
   const navigate = useNavigate();
 
-  const onRectangleClick = useCallback(() => {
-    navigate("/frame-34");
-  }, [navigate]);
-
   const onBackTextClick = useCallback(() => {
-    navigate("/desktop-22");
+    navigate("/");
   }, [navigate]);
 
   return (

@@ -8,6 +8,8 @@ const GroupComponent2 = ({
   groupDivLeft,
   groupDivBorderRadius,
   rectangleDivBorder,
+  inputValue,
+  onInputChange,
 }) => {
   const groupDiv2Style = useMemo(() => {
     return {
@@ -27,8 +29,14 @@ const GroupComponent2 = ({
   return (
     <div className={styles.enterYourEmailAddressParent} style={groupDiv2Style}>
       <div className={styles.enterYourEmail1}>{enterYourEmailAddress}</div>
-      <div className={styles.componentChild} style={rectangleDiv2Style} />
-      <div className={styles.examplegmailcom}>{examplegmailcom}</div>
+      {/* <div className={styles.componentChild} style={rectangleDiv2Style} /> */}
+      {/* <div className={styles.examplegmailcom}>{examplegmailcom}</div> */}
+      <input
+        type="text"
+        value={inputValue}
+        onChange={onInputChange}
+        className={styles.componentChild}
+      />
     </div>
   );
 };

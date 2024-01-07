@@ -34,7 +34,8 @@ const Table = (props) => {
 						{props.columns.map((col) => {
 							if (col.field === 'ts') {
 								let date = new Date(row[col.field]);
-                                let formattedDate = date.toLocaleString();
+								let options = { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+                                let formattedDate = date.toLocaleString('vi-VN', options);
 								return <td key={row[col.field]}>{formattedDate} </td>;
 							} else if (col.field !== 'action') {
 								return <td key={row[col.field]}>{row[col.field]}</td>;

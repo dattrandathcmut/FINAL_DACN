@@ -1,10 +1,8 @@
 .images2Icon {
   position: absolute;
-  top: 16px;
-  left: 0px;
   border-radius: var(--br-mini);
-  width: 1440px;
-  height: 1024px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 .frameChild {
@@ -51,9 +49,15 @@
   height: 86px;
 }
 .images2Parent {
-  position: relative;
+  position: absolute;
   background-color: var(--neutral-colors-white);
   width: 100%;
   height: 1040px;
   overflow: hidden;
+}
+
+.WelcomeContainer{
+  position: relative;
+  top: 10%;
+  left: 30%;
 }
