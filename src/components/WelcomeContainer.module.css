@@ -101,3 +101,6 @@
   color: var(--color-black);
   font-family: var(--font-poppins);
 }
+.redTextColor input{
+  color: red !important;
+}

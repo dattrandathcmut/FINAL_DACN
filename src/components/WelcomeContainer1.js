@@ -5,6 +5,8 @@ import styles from './WelcomeContainer1.module.css';
 const WelcomeContainer1 = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [inputType, setInputType] = useState('');
+	const [inputClass, setInputClass] = useState('');
 	const navigate = useNavigate();
 	const onNoAccountClick = useCallback(() => {
 		navigate('/register');
@@ -21,28 +23,34 @@ const WelcomeContainer1 = () => {
 			const response = await fetch('http://localhost:5000/api/users/login', {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
 					email: email,
-					password: password
-				})
+					password: password,
+				}),
 			});
 			const json = await response.json();
-			// console.log(json);
-			sessionStorage.setItem('token', json.token);
 
+			if (json.status === 'success') {
+				sessionStorage.setItem('token', json.token);
+				alert('Login Successful!');
+				navigate('/main');
+			} else if (json.status === 'fail') {
+				setEmail(json.message);
+				setPassword(json.message);
+				setInputType('text');
+				setInputClass(styles.redTextColor);
+			}
 		} catch (error) {
 			console.error('Error posting data:', error);
-			navigate('/404');
+			console.log('Error posting data:', error);
 		}
 	}, [email, password]);
-	
-	const onGroupButtonClick = useCallback(async() => {
-		await postData();
-		navigate('/main');
-	}, [email, password, navigate]);
 
+	const onGroupButtonClick = useCallback(async () => {
+		await postData();
+	}, [email, password]);
 
 	return (
 		<div className={styles.rectangleParent}>
@@ -57,35 +65,35 @@ const WelcomeContainer1 = () => {
 				<span className={styles.signUp}>Sign up</span>
 			</div>
 			<div className={styles.login}>Login</div>
-			{/* <GroupComponent2
-				enterYourEmailAddress='Enter your email address'
-				groupDivPosition='absolute'
-				groupDivTop='199px'
-				groupDivLeft='63px'
-				groupDivBorderRadius='15px'
-				inputValue={email}
-				onInputChange={(e) => setEmail(e.target.value)}
-			/> */}
-			<GroupComponent2
-				enterYourEmailAddress='Enter your email address'
-				examplegmailcom='example@gmail.com'
-				groupDivPosition='absolute'
-				groupDivTop='199px'
-				groupDivLeft='63px'
-				groupDivBorderRadius='15px'
-				rectangleDivBorder='1px solid var(--color-dodgerblue)'
-				inputValue={email}
-				onInputChange={(e) => setEmail(e.target.value)}
-			/>
-			<GroupComponent2
-				enterYourEmailAddress='Enter your Password'
-				groupDivPosition='absolute'
-				groupDivTop='309px'
-				groupDivLeft='63px'
-				groupDivBorderRadius='15px'
-				inputValue={password}
-				onInputChange={(e) => setPassword(e.target.value)}
-			/>
+			<div className={inputClass}>
+				<GroupComponent2
+					enterYourEmailAddress='Enter your email address'
+					examplegmailcom='example@gmail.com'
+					groupDivPosition='absolute'
+					groupDivTop='199px'
+					groupDivLeft='63px'
+					groupDivBorderRadius='15px'
+					rectangleDivBorder='1px solid var(--color-dodgerblue)'
+					inputValue={email}
+					onInputChange={(e) => setEmail(e.target.value)}
+				/>
+				<GroupComponent2
+					inputType={inputType}
+					enterYourEmailAddress='Enter your Password'
+					groupDivPosition='absolute'
+					groupDivTop='309px'
+					groupDivLeft='63px'
+					groupDivBorderRadius='15px'
+					inputValue={password}
+					onInputChange={(e) => {
+						if(inputType =='text') {
+							e.target.value = null;
+						}
+						setInputType('password');
+						setPassword(e.target.value);
+					}}
+				/>
+			</div>
 			<div
 				className={styles.forgotPassword}
 				onClick={onForgotPasswordTextClick}
